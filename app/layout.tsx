@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { SiteNav } from "@/components/layout/site-nav";
 import { SiteFooter } from "@/components/sections/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = GeistSans;
 
 export const metadata: Metadata = {
   title: "CodeVerse – Learn, Practice & Master Coding",
@@ -44,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh bg-background text-foreground flex flex-col`}
+        className={`${geistSans.variable} antialiased min-h-dvh bg-background text-foreground flex flex-col`}
       >
         <SiteNav />
         <div className="flex-1 flex flex-col">{children}</div>
