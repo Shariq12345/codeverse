@@ -1,4 +1,4 @@
-import { RoadmapMeta, RoadmapNode } from "./types";
+import { RoadmapMeta } from "./types";
 
 export const ROADMAPS: RoadmapMeta[] = [
   {
