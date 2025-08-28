@@ -7,23 +7,21 @@ import { Progress } from "@/components/ui/progress";
 import { Trophy, ArrowRight, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 
-function getProgress(slug: string, nodes: any[]) {
+interface RoadmapNode {
+  id: string;
+  children?: RoadmapNode[];
+  title?: string;
+  description?: string;
+}
+
+function getProgress(slug: string, nodes: RoadmapNode[]): number {
   if (typeof window === "undefined") return 0;
   const saved = localStorage.getItem(`roadmap-${slug}`);
   if (!saved) return 0;
-  const progress = JSON.parse(saved);
-  interface RoadmapNode {
-    id: string;
-    children?: RoadmapNode[];
-    [key: string]: any;
-  }
-
-  interface ProgressMap {
-    [id: string]: boolean;
-  }
+  const progress: Record<string, boolean> = JSON.parse(saved);
 
   const allNodes: RoadmapNode[] = [];
-  function traverse(nodeList: any[]) {
+  function traverse(nodeList: RoadmapNode[]) {
     nodeList.forEach((node) => {
       allNodes.push(node);
       if (node.children) traverse(node.children);
