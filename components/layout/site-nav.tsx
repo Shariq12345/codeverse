@@ -46,12 +46,16 @@ export function SiteNav() {
           ))}
         </ul>
         <div className="ml-auto flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
-            Sign in
-          </Button>
-          <Button size="sm" className="shadow-sm shadow-primary/30">
-            Get Started
-          </Button>
+          <Link href="/signin">
+            <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
+              Sign in
+            </Button>
+          </Link>
+          <Link href="/signup">
+            <Button size="sm" className="shadow-sm shadow-primary/30">
+              Get Started
+            </Button>
+          </Link>
         </div>
       </nav>
     </header>
